@@ -1,32 +1,35 @@
 ## Program Management Kontak
-def liat_kontak():
-    if kontak:
-        for num, item in enumerate(kontak, start=1):
-            print(f'{num}. {item["nama"]} ({item["NO"]}, {item["Email"]})')
-    else:
-        print("lohe kontaknya uda kosong :(((")
-        return 1
+class Kontak:
+    def __init__(self):
+        self.kontak = []
 
-def tambah_kontak():
-    nama = input("masukkan nama = ")
-    no = input("masukkan no.hp = ")
-    email = input("masukkan email = ")
-    kontak_baru = {"nama": nama, "NO": no, "Email": email}
-    kontak.append(kontak_baru)
-    print("uda berhasil ditambah nih")
+    def liat_kontak(self):
+        if self.kontak:
+            for num, item in enumerate(self.kontak, start=1):
+                print(f'{num}. {item["nama"]} ({item["NO"]}, {item["Email"]})')
+        else:
+            print("lohe kontaknya uda kosong :(((")
+            return 1
 
-def hapus_kontak():
-    if liat_kontak() == 1:
-        return
-    else:
-        i_hapus = int(input("mau delete yang mana nihh = "))
-        del kontak[i_hapus - 1]
-        print("kontak sudah terhapus :(((")
+    def tambah_kontak(self):
+        nama = input("masukkan nama = ")
+        no = input("masukkan no.hp = ")
+        email = input("masukkan email = ")
+        kontak_baru = {"nama": nama, "NO": no, "Email": email}
+        self.kontak.append(kontak_baru)
+        print("uda berhasil ditambah nih")
+
+    def hapus_kontak(self):
+        if self.liat_kontak() == 1:
+            return
+        else:
+            i_hapus = int(input("mau delete yang mana nihh = "))
+            del self.kontak[i_hapus - 1]
+            print("kontak sudah terhapus :(((")
 
 
-kontak1 = {"nama": "witan", "NO": "082457236812", "Email": 'witan@gmail.com'}
-kontak2 = {"nama": "hokky", "NO": "082457237341", "Email": 'hokky@gmail.com'}
-kontak = [kontak1, kontak2]
+kontak_keluarga = Kontak()
+kontak_kantor = Kontak()
 
 while True :
     print("\n Menu kontak")
@@ -38,13 +41,13 @@ while True :
     pilihan = int(input("kamu pilih menu ke = "))
 
     if pilihan == 1:
-        liat_kontak()
+        kontak_kantor.liat_kontak()
 
     elif pilihan == 2:
-        tambah_kontak()
+        kontak_kantor.tambah_kontak()
 
     elif pilihan == 3:
-       hapus_kontak()
+       kontak_kantor.hapus_kontak()
 
     elif pilihan == 4:
         break
